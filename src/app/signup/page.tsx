@@ -35,7 +35,7 @@ const SignupPage = () => {
       user.username.length > 0
     ) {
       setButtonDisabled(false);
-    }else{
+    } else {
       setButtonDisabled(true);
     }
   }, [user]);
@@ -75,12 +75,18 @@ const SignupPage = () => {
       />
       <button
         onClick={onSignUp}
-        className="p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-gray-600"
+        className="inline-block rounded-lg px-6 py-1.5 mt-2 text-base font-semibold leading-7 hover:bg-gray-400 bg-blue-400"
+        disabled={buttonDisabled}
       >
-        {buttonDisabled ? "No signup" : "Signup"}
+        Signup
       </button>
       <br />
-      <Link href="/login">Visit login page</Link>
+      <Link
+        href="/login"
+        className="inline-block rounded-lg px-6 py-1.5 mt-2 text-base font-semibold leading-7 hover:bg-gray-400 bg-blue-400"
+      >
+        Visit login page
+      </Link>
     </div>
   );
 };

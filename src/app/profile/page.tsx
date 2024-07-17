@@ -20,7 +20,6 @@ const ProfilePage = () => {
   };
   const getUserDetails = async () => {
     const res = await axios.get("/api/users/me");
-    console.log(res.data.data);
     setUserData(res.data.data.username);
   };
   return (
@@ -31,9 +30,12 @@ const ProfilePage = () => {
         {userData === "nothing" ? (
           "Nothing"
         ) : (
-          <Link href={`/profile/${userData}`}
-          className="p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-gray-600 bg-indigo-400"
-          >{userData}</Link>
+          <Link
+            href={`/profile/${userData}`}
+            className="p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-gray-600 bg-indigo-400"
+          >
+            {userData}
+          </Link>
         )}
       </h2>
       <button

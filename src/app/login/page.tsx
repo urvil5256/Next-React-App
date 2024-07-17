@@ -63,12 +63,26 @@ const LoginPage = () => {
       />
       <button
         onClick={onLogin}
-        className="p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-gray-600"
+        // className="p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-gray-600"
+        className="inline-block rounded-lg px-6 py-1.5 mt-2 text-base font-semibold leading-7 hover:bg-gray-400 bg-blue-400"
+        disabled={buttonDisabled}
       >
-        {buttonDisabled ? "No Login" : "Login here"}
+        Login
       </button>
       <br />
-      <Link href="/signup">Visit signup page</Link>
+      <Link
+        href="/signup"
+        className="inline-block rounded-lg px-6 py-1.5 mt-2 text-base font-semibold leading-7 hover:bg-gray-400 bg-blue-400"
+      >
+        Visit signup page
+      </Link>
+      <br />
+      <Link
+        href="/forgotpassword"
+        className="inline-block rounded-lg px-6 py-1.5 mt-2 text-base font-semibold leading-7 hover:bg-gray-400 bg-blue-400"
+      >
+        Visit forgot password
+      </Link>
     </div>
   );
 };

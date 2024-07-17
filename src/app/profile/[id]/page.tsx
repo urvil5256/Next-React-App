@@ -1,4 +1,4 @@
-import React from "react";
+import Link from "next/link";
 
 function UserProfile({ params }: any) {
   return (
@@ -11,6 +11,12 @@ function UserProfile({ params }: any) {
           {params.id}
         </span>
       </p>
+      <Link
+        href="/profile"
+        className="p-2 border mt-4 border-gray-300 rounded-lg focus:outline-none focus:border-gray-600 bg-orange-400"
+      >
+        Back
+      </Link>
     </div>
   );
 }
