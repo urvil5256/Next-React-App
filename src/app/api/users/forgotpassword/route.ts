@@ -58,17 +58,13 @@ export async function POST(request: NextRequest) {
 const updatePassword = async ({ password, email }: any) => {
   try {
     const encryptPass = await bcrypt.hash(password, 10);
-    console.log("encryptPass :", encryptPass);
     const response = await User.updateOne(
       { email },
       { $set: { password: encryptPass } }
     );
-    console.log("response :", response);
     toast.success(response.upsertedCount + "");
-    console.log(response);
   } catch (error: any) {
     console.log(error.message);
-
     toast.error("Password not updated");
   }
 };

@@ -5,7 +5,6 @@ import jwt from "jsonwebtoken";
 
 export const sendEmail = async ({ email, emailType, userId }: any) => {
   try {
-    console.log("emailType :", emailType);
     const SENDER_EMAIL = process.env.MAILTRAP_USER;
     const RECIPIENT_EMAIL = email;
     const SENDER_PASSWORD = process.env.MAILTRAP_PASSWORD;
