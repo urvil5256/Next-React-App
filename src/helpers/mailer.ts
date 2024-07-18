@@ -15,7 +15,6 @@ export const sendEmail = async ({ email, emailType, userId }: any) => {
         : "Reset your password";
 
     // Create a hased token
-    // const hasedToken = await bcrypt.hash(userId.toString(), 10);
     const tokenData = {
       email,
     };
@@ -42,15 +41,14 @@ export const sendEmail = async ({ email, emailType, userId }: any) => {
         pass: SENDER_PASSWORD,
       },
     });
-
     const mailOptions = {
       from: SENDER_EMAIL,
       to: RECIPIENT_EMAIL,
       subject: EMAIL_MESSAGE,
       html:
         EmailType.verifyEmail === emailType
-          ? `<p>Click <a href="${process.env.domain}/verifyemail?token=${hasedToken}">here</a> to ${EMAIL_MESSAGE}</p>`
-          : `<p>Click <a href="${process.env.domain}/forgotpassword?token=${hasedToken}">here</a> to ${EMAIL_MESSAGE}</p>`,
+          ? `<p>Click <a href="${process.env.DOMAIN}/verifyemail?token=${hasedToken}">here</a> to ${EMAIL_MESSAGE}</p>`
+          : `<p>Click <a href="${process.env.DOMAIN}/forgotpassword?token=${hasedToken}">here</a> to ${EMAIL_MESSAGE}</p>`,
     };
 
     const mailResponse = await transport.sendMail(mailOptions);

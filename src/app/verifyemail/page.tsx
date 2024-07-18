@@ -32,28 +32,36 @@ const VerifyEmailPage = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
-      <h1 className="text-4xl">Verify Email</h1>
-      <h2 className="p-2 mt-4 bg-orange-500 text-black">
-        {token ? `${token}` : "No Token"}
-      </h2>
-      {verified && (
-        <div className="text-2xl mt-4">
-          Email Verified
-          <p className="mt-2 text-center">
-            <Link
-              href="/login"
-              className="inline-block rounded-lg px-6 py-1.5 mt-2 text-base font-semibold leading-7 hover:bg-gray-400 bg-blue-400"
-            >
-              Log in
-            </Link>
-          </p>
+      <div className="w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
+        <div className="px-6 py-4">
+          <h3 className="mt-3 text-xl font-medium text-center text-gray-600 dark:text-gray-200">
+            Verify Email
+          </h3>
         </div>
-      )}
-      {isError && (
-        <div className="text-2xl text-center p-2 mt-4 bg-red-500 text-black">
-          Error
+        <div className="px-6 py-4">
+          <h3 className="mt-3 text-xl font-medium text-center text-gray-600 dark:text-gray-200">
+            {token ? `${token}` : "No Token"}
+          </h3>
         </div>
-      )}
+        {verified && (
+          <div className="text-2xl mt-4">
+            Email Verified
+            <p className="mt-2 text-center">
+              <Link
+                href="/login"
+                className="inline-block rounded-lg px-6 py-1.5 mt-2 text-base font-semibold leading-7 hover:bg-gray-400 bg-blue-400"
+              >
+                Log in
+              </Link>
+            </p>
+          </div>
+        )}
+        {isError && (
+          <div className="text-2xl text-center p-2 mt-4 bg-red-500 text-black">
+            Error
+          </div>
+        )}
+      </div>
     </div>
   );
 };
