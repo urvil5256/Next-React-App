@@ -5,7 +5,9 @@ import { NextRequest, NextResponse } from "next/server";
 import { EmailType } from "../../const";
 import toast from "react-hot-toast";
 import bcrypt from "bcryptjs";
+import { connect } from "@/dbConfig/dbConfig";
 
+connect();
 export async function POST(request: NextRequest) {
   try {
     const reqBody = await request.json();

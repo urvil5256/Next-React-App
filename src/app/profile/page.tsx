@@ -33,8 +33,10 @@ const ProfilePage = () => {
       <div className="relative flex w-96 flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
         <div className="relative mx-4 mt-4 h-80 overflow-hidden rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg">
           <Image
-            src="https://bucket.material-tailwind.com/magic-ai/06b38f84f9669f766048c469ce861b81880378273a11ae9badaedfc32868ef44.jpg"
+            src="/profileimage.jpg"
             alt="profile-picture"
+            width={500}
+            height={100}
             className="h-full object-cover"
           />
         </div>
