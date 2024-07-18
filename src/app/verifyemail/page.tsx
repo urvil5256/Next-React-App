@@ -3,18 +3,16 @@
 import axios from "axios";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 
 const VerifyEmailPage = () => {
   const [token, setToken] = useState("");
-  const [verified, setVerified] = useState(false);
-  const [isError, setIsError] = useState(false);
 
   const VerifyUserEmail = async () => {
     try {
       await axios.post("/api/users/verifyemail", { token });
-      setVerified(true);
     } catch (error: any) {
-      setIsError(true);
+      toast.error(error.response.data);
       console.log(error.response.data);
     }
   };
@@ -32,35 +30,34 @@ const VerifyEmailPage = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
-      <div className="w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
-        <div className="px-6 py-4">
-          <h3 className="mt-3 text-xl font-medium text-center text-gray-600 dark:text-gray-200">
-            Verify Email
+      <Toaster position="top-right" reverseOrder={false} />
+      <div className="bg-white p-6  md:mx-auto">
+        <svg
+          viewBox="0 0 24 24"
+          className="text-green-600 w-16 h-16 mx-auto my-6"
+        >
+          <path
+            fill="currentColor"
+            d="M12,0A12,12,0,1,0,24,12,12.014,12.014,0,0,0,12,0Zm6.927,8.2-6.845,9.289a1.011,1.011,0,0,1-1.43.188L5.764,13.769a1,1,0,1,1,1.25-1.562l4.076,3.261,6.227-8.451A1,1,0,1,1,18.927,8.2Z"
+          ></path>
+        </svg>
+        <div className="text-center">
+          <h3 className="md:text-2xl text-base text-gray-900 font-semibold text-center">
+            Email Verified Successfully!
           </h3>
-        </div>
-        <div className="px-6 py-4">
-          <h3 className="mt-3 text-xl font-medium text-center text-gray-600 dark:text-gray-200">
-            {token ? `${token}` : "No Token"}
-          </h3>
-        </div>
-        {verified && (
-          <div className="text-2xl mt-4">
-            Email Verified
-            <p className="mt-2 text-center">
-              <Link
-                href="/login"
-                className="inline-block rounded-lg px-6 py-1.5 mt-2 text-base font-semibold leading-7 hover:bg-gray-400 bg-blue-400"
-              >
-                Log in
-              </Link>
-            </p>
+          <p className="text-gray-600 my-2">
+            Thank you for completing email verification.
+          </p>
+          <p> Have a great day! </p>
+          <div className="py-10 text-center">
+            <Link
+              href="/login"
+              className="px-12 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-3"
+            >
+              Login
+            </Link>
           </div>
-        )}
-        {isError && (
-          <div className="text-2xl text-center p-2 mt-4 bg-red-500 text-black">
-            Error
-          </div>
-        )}
+        </div>
       </div>
     </div>
   );
